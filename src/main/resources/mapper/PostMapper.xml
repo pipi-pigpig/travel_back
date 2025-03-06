@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.travel.Mapper.PostMapper">
+
+
+
+<!--    <update id="update" parameterType="Post">-->
+
+<!--            update posts-->
+<!--            <set>-->
+<!--                <if test="post_id!=null">post_id=#{post_id}</if>-->
+<!--                <if test="title!=null">title=#{title}</if>-->
+<!--                <if test="message!=null">message=#{message}</if>-->
+<!--                <if test="create_id!=null">create_id=#{create_id}</if>-->
+<!--                <if test="update_id!=null">update_id=#{update_id}</if>-->
+<!--                <if test="likes!=null">likes=#{likes}</if>-->
+<!--                <if test="post_partition!=null">post_partition=#{post_partition}</if>-->
+<!--            </set>-->
+<!--            where user_id=#{user_id}-->
+
+<!--   </update>-->
+
+
+</mapper>
