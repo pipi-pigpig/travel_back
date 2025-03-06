@@ -10,7 +10,7 @@ public interface UserLoginService {
 
     List<Address> getById(long userId);
 
-    void updateUser(long userId, String username);
+    void updateUser(long userId,String username);
 
     void deleteAddr(long addrId);
 }

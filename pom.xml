@@ -11,7 +11,7 @@
     <groupId>com.travel</groupId>
     <artifactId>JiangXiProvince-travel</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>springboot-mybatis-crud</name>
+    <name>springboot-mybatis-crud-travel</name>
     <description>JiangXiProvince-travel</description>
     <url/>
     <licenses>

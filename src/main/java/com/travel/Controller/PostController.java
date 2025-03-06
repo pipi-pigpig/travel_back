@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @CrossOrigin
 @Slf4j
@@ -20,15 +21,23 @@ public class PostController {
     @Autowired
     private PostService postService;
 
-    @GetMapping("/getPosts")
+    /*
+    获得帖子
+     */
+    @PostMapping("/getPosts")
     public List<Post> getUser(){
 
         return postService.find();
     }
 
-    @GetMapping("/{post_id}")
-    public Result<Post> getUsers(@PathVariable long post_id){
+    /*
+    根据id查帖子
+     */
+    @PostMapping("/post_id")
+    public Result<Post> getUsers(@RequestBody Map<String, Long> request){
 
+        Long post_id= request.get("post_id");
+        log.info("根据id查帖子: {}", post_id);
         Post post= postService.getById(post_id);
         return Result.success(post);
     }
