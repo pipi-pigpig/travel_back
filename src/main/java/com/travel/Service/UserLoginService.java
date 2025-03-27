@@ -13,4 +13,14 @@ public interface UserLoginService {
     void updateUser(long userId,String username);
 
     void deleteAddr(long addrId);
+
+    void updateEmail(long userId, String email);
+
+    void updatePhone(long userId, String phone);
+
+    void updateNowAddress(long userId, long addId);
+
+    void updateAddress(long userId, long addId, String address);
+
+    void deleteAddress(long userId, long addId);
 }
