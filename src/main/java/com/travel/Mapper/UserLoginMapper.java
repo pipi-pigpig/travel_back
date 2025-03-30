@@ -3,10 +3,7 @@ package com.travel.Mapper;
 
 import com.travel.entity.Address;
 import com.travel.entity.User;
-import org.apache.ibatis.annotations.Delete;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
@@ -23,8 +20,8 @@ public interface UserLoginMapper {
     void updateUser(long userId, String username);
 
 
-//    @Delete("delete  from user_addr where addr_id=#{addrId}")
-//    void deleteAddr(long addrId);
+    @Delete("delete  from user_addr where addr_id=#{addrId}")
+    void deleteAddr(long addrId);
 
     @Update("update users set email=#{email} where user_id=#{userId} ")
     void updateEmail(long userId, String email);
@@ -40,4 +37,7 @@ public interface UserLoginMapper {
 
     @Delete("delete  from user_addr where user_id=#{userId} and addr_id=#{addrId}")
     void deleteAddress(long userId, long addId);
+
+    @Insert("insert into user_addr(user_id, address) values (#{userId},#{address})")
+    void insertAddress(long userId, String address);
 }

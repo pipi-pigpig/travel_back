@@ -23,4 +23,7 @@ public interface UserLoginService {
     void updateAddress(long userId, long addId, String address);
 
     void deleteAddress(long userId, long addId);
+
+    int addAddress(long userId, String address);
+
 }

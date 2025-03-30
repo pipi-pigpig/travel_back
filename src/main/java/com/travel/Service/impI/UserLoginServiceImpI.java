@@ -72,5 +72,13 @@ public class UserLoginServiceImpI implements UserLoginService {
     public void deleteAddress(long userId, long addId) {
         userLoginMapper.deleteAddress(userId,addId);
     }
+
+    @Override
+    public int addAddress(long userId, String address) {
+        Address address1=new Address();
+        userLoginMapper.insertAddress(userId,address);
+        int addr_id=address1.getAddr_id();
+        return addr_id;
+    }
 }
 

@@ -214,11 +214,9 @@ public class UserLoginController {
         try {
             long user_id = ((Number) request.get("user_id")).longValue();
             String address = (String) request.get("address");
-
-
             log.info("根据id增加地址: {},{}", user_id,address);
-            userLoginService.addAddress(user_id,address);
-            return 1;
+            int addr_id= userLoginService.addAddress(user_id,address);
+            return addr_id;
         }catch (Exception e){
             return 0;
         }

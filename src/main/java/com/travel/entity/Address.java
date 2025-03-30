@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class Address {
 
+    private long user_id;
     private String address;
-    private long addr_id;
+    private int addr_id;
 }
