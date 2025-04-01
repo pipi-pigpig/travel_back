@@ -16,8 +16,8 @@ public interface ProductMapper {
     @Select("select * from local_products limit  12")
     List<Products> finds();
 
-    @Select("select shopping_cart.product_id,shopping_cart.quantity,local_products.name,local_products.image from local_products,shopping_cart\n" +
-            "where user_id=1 and local_products.product_id=shopping_cart.product_id;")
+    @Select("select shopping_cart.product_id,shopping_cart.quantity,local_products.name,local_products.image,local_products.price from local_products,shopping_cart\n" +
+            "where user_id=#{userId} and local_products.product_id=shopping_cart.product_id;")
     List<Products> getById(Long userId);
 
     @Update("update shopping_cart set quantity=quantity+1 where user_id=#{userId} and product_id=#{productId}")

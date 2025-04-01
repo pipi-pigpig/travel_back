@@ -18,6 +18,7 @@ public class Products {
     private Integer price;
     private String image;
     private Integer stock;
+    private Integer quantity;
     private LocalDateTime created_at ;     // created_at
     private LocalDateTime updated_at ;
     private String keyword;

@@ -50,6 +50,7 @@ public class UserLoginServiceImpI implements UserLoginService {
     public void updateEmail(long userId, String email) {
 
          userLoginMapper.updateEmail(userId,email);
+         
     }
 
     @Override
