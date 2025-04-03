@@ -1,5 +1,6 @@
 package com.travel.Service;
 
+import com.travel.DTO.PostCheckOutDTO;
 import com.travel.entity.Address;
 import com.travel.entity.Products;
 
@@ -15,4 +16,7 @@ public interface ProductService {
     void reduceQuantity(long userId, long productId);
 
     void deleteProduction(long userId, long productId);
+
+    void postCheckOut(PostCheckOutDTO postCheckOutDTO);
+
 }

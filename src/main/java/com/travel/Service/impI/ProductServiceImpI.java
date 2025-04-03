@@ -1,15 +1,18 @@
 package com.travel.Service.impI;
 
 
+import com.travel.DTO.PostCheckOutDTO;
 import com.travel.Mapper.PostMapper;
 import com.travel.Mapper.ProductMapper;
 import com.travel.Service.ProductService;
-import com.travel.entity.Address;
-import com.travel.entity.Products;
+import com.travel.entity.*;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Slf4j
@@ -45,5 +48,30 @@ private ProductMapper productMapper;
     @Override
     public void deleteProduction(long userId, long productId) {
         productMapper.deleteProduction(userId,productId);
+    }
+
+    @Override
+    @Transactional
+    public void postCheckOut(PostCheckOutDTO postCheckOutDTO) {
+
+        PreOrders preOrders = new PreOrders();
+        BeanUtils.copyProperties(postCheckOutDTO,preOrders);
+        preOrders.setCreate_at(LocalDateTime.now());
+        preOrders.setStatus("pending");
+        //preOrders.setOrder_id(1);
+        productMapper.insert(preOrders);
+
+        long orderId= preOrders.getOrder_id();
+
+
+        List<OrderDetail> orderDetail=postCheckOutDTO.getOrderDetails();
+        if (orderDetail!=null&&orderDetail.size()>0){
+            for (OrderDetail orderDetail1 : orderDetail) {
+
+                orderDetail1.setOrder_id(orderId);
+            }
+            productMapper.insertBatch(orderDetail);
+        }
+
     }
 }

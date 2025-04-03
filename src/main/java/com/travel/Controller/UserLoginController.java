@@ -106,6 +106,7 @@ public class UserLoginController {
 
     }
 
+    //废弃接口
     @DeleteMapping("/{addr_id}")
     public Result deleteAttraction(@PathVariable long addr_id) {
 

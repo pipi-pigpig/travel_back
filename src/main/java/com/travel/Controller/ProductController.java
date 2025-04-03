@@ -1,6 +1,7 @@
 package com.travel.Controller;
 
 
+import com.travel.DTO.PostCheckOutDTO;
 import com.travel.Service.ProductService;
 import com.travel.entity.Address;
 import com.travel.entity.Products;
@@ -128,4 +129,33 @@ public class ProductController {
         }
 
     }
+    /*
+     * 用户结算账单
+     *postCheckOut
+     * 请求参数：
+     * user_id:String,
+     * total_price:Number,
+     * address:String,
+     * order_details:[{
+     *  product_id:String,
+     *  quantity:Number,
+     *  price:Number
+     * },...]
+     *
+     * 响应参数：
+     * 是否提交结算成功
+     */
+
+    @PostMapping("/postCheckOut")
+    public  int postCheckOut(@RequestBody PostCheckOutDTO postCheckOutDTO) {
+        try {
+            log.info("根据id修改用户结算账单");
+            productService.postCheckOut(postCheckOutDTO);
+            return 1;
+        }catch (Exception e){
+            return 0;
+        }
+
+    }
+
 }

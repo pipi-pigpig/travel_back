@@ -2,11 +2,10 @@ package com.travel.Mapper;
 
 
 import com.travel.entity.Address;
+import com.travel.entity.OrderDetail;
+import com.travel.entity.PreOrders;
 import com.travel.entity.Products;
-import org.apache.ibatis.annotations.Delete;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
@@ -29,4 +28,9 @@ public interface ProductMapper {
     @Delete("delete  from shopping_cart where user_id=#{userId} and product_id=#{productId}")
     void deleteProduction(long userId, long productId);
 
+    @Insert("insert into pre_orders( user_id, total_price, status, created_at, address)" +
+            "values (#{user_id},#{total_price},#{status},#{created_at},#{address})")
+    void insert(PreOrders preOrders);
+
+    void insertBatch(List<OrderDetail> orderDetail);
 }
