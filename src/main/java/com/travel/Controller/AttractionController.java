@@ -1,9 +1,11 @@
 package com.travel.Controller;
 
 
+import com.travel.AtrractionsVO.AttractionsVO;
 import com.travel.AtrractionsVO.LocationAttractionsResponse;
 import com.travel.Service.AttractionService;
 import com.travel.entity.Attractions;
+import com.travel.entity.Products;
 import com.travel.result.Result;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,8 +25,27 @@ public class AttractionController {
     @Autowired
     private AttractionService attractionService;
 
-    @GetMapping("/getAttractions")
-    public List<LocationAttractionsResponse> getAttractions() {
+
+    /*
+     * 获取景点数据
+     * fetchAttractions
+     * 请求参数：
+     * attraction_id:String,
+     *
+     * 响应参数：
+     * locations:[{
+     *    loaction,
+     *    attractions:[{
+     *      attraction_id,
+     *      name,
+     *      description,
+     *      image,
+     *      },...]
+     * },...],
+     *
+     */
+    @PostMapping("/fetchAttractions")
+    public List<LocationAttractionsResponse> fetchAttractions() {
         List<LocationAttractionsResponse> locationsList = new ArrayList<>();
 
         // 假设 attractionService.find() 获取所有景点数据
@@ -45,7 +66,7 @@ public class AttractionController {
                             attraction.getAttraction_id(), // 改为 attraction_id
                             attraction.getName(),
                             attraction.getImage(), // 改为 image
-                            attraction.getMessage()))
+                            attraction.getDescription()))
                     .collect(Collectors.toList());
 
             locationsList.add(new LocationAttractionsResponse(locationName, attractionResponses));
@@ -65,4 +86,36 @@ public class AttractionController {
         return Result.success(attractions);
     }
 
+    /*
+     * 获取单个景点的详细信息
+     * fetchAttractionDetail
+     * 请求参数：
+     * attraction_id: String  // 景点ID,从attractionsLists组件中获取
+     *
+     * 响应参数：
+     * {
+     *   name: String,            // 景点名称
+     *   created_at: String,     // 创建时间
+     *   updated_at: String,      // 更新时间
+     *   location: String,        // 所在地区
+     *   image: String,            // 景点图片地址
+     *   opening_hours: String,   // 开放时间
+     *   transportation: String,  // 交通信息
+     *   description: String,     // 景点描述
+     *   relatedFigures: [{     // 相关名人信息数组
+     *     person_id: String,     // 名人ID
+     *     name: String,         // 名人姓名
+     *     image: String,        // 名人图片地址
+     *     message: String       // 名人介绍
+     *   }],
+     *   likes: Number           // 点赞数量
+     * }
+     */
+    @PostMapping("/fetchAttractionDetail")
+    public AttractionsVO fetchAttractionDetail(@RequestBody Map<String, Long> request) {
+
+        Long attraction_id= request.get("attraction_id");
+        log.info("根据id获取单个景点的详细信息: {}", attraction_id);
+        return attractionService.fetchAttractionDetail(attraction_id);
+    }
 }

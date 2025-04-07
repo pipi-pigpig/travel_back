@@ -150,9 +150,11 @@ public class ProductController {
     public  int postCheckOut(@RequestBody PostCheckOutDTO postCheckOutDTO) {
         try {
             log.info("根据id修改用户结算账单");
-            productService.postCheckOut(postCheckOutDTO);
+            //System.out.println(postCheckOutDTO.getOrder_details());
+           productService.postCheckOut(postCheckOutDTO);
             return 1;
         }catch (Exception e){
+            System.out.println(e.getMessage());
             return 0;
         }
 

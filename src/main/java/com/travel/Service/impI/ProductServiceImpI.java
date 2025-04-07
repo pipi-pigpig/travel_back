@@ -64,7 +64,8 @@ private ProductMapper productMapper;
         long orderId= preOrders.getOrder_id();
 
 
-        List<OrderDetail> orderDetail=postCheckOutDTO.getOrderDetails();
+        List<OrderDetail> orderDetail=postCheckOutDTO.getOrder_details();
+        System.out.println("666:"+orderDetail);
         if (orderDetail!=null&&orderDetail.size()>0){
             for (OrderDetail orderDetail1 : orderDetail) {
 

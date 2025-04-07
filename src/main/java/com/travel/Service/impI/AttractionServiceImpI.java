@@ -1,10 +1,13 @@
 package com.travel.Service.impI;
 
 
+import com.travel.AtrractionsVO.AttractionsVO;
 import com.travel.Mapper.AttractionMapper;
 import com.travel.Service.AttractionService;
 import com.travel.entity.Attractions;
+import com.travel.entity.FamousPeople;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -29,5 +32,18 @@ public class AttractionServiceImpI  implements AttractionService {
 
 
         return attractions;
+    }
+
+    @Override
+    public AttractionsVO fetchAttractionDetail(Long attractionId) {
+
+        Attractions attractions=attractionMapper.getById(attractionId);
+
+        AttractionsVO attractionsVO=new AttractionsVO();
+        BeanUtils.copyProperties(attractions,attractionsVO);
+
+        List<FamousPeople> famousPeople=attractionMapper.getFamousPeopleById(attractionId);
+        attractionsVO.setRelatedFigures(famousPeople);
+        return attractionsVO;
     }
 }

@@ -13,10 +13,9 @@ import java.util.UUID;
 @AllArgsConstructor
 public class FamousPeople {
 
-    private Integer person_id;
+    private long person_id;
     private String name;
     private String message;
-    private UUID image;
-    private LocalDateTime create_at;
-    private LocalDateTime update_at;
+    private String image;
+
 }

@@ -18,5 +18,5 @@ public class PostCheckOutDTO {
     private Integer total_price;
     private String address;
 
-    private List<OrderDetail> orderDetails=new ArrayList<>();
+    private List<OrderDetail> order_details=new ArrayList<>();
 }
