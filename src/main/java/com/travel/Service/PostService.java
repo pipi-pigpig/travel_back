@@ -11,4 +11,10 @@ public interface PostService {
     void savePost(PostDTO postDTO);
 
     Post getById(long postId);
+
+    void deletePost(long postId);
+
+    Post fetchPostsDetails(long postId);
+
+    int handleLikes1(long postId);
 }

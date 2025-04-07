@@ -50,4 +50,78 @@ public class PostController {
         postService.savePost(postDTO);
         return Result.success();
     }
+
+    /*
+     * 删除帖子
+     * deletePost
+     * 请求参数：
+     * {
+     *   post_id: Number  // 要删除的帖子ID
+     * }
+     *
+     * 响应参数：
+     * {
+     *   message: String  // 删除成功提示信息
+     * }
+     *
+     */
+    @PostMapping("/deletePost")
+    public  String deletePost(@RequestBody Map<String, Object> request) {
+
+        try {
+            long post_id = ((Number) request.get("post_id")).longValue();
+
+            log.info("根据id删除帖子: {}", post_id);
+            postService.deletePost(post_id);
+            return "删除成功";
+        }catch (Exception e){
+            return "删除失败";
+        }
+
+    }
+    /*
+     * 获取帖子详情
+     * fetchPostsDetails
+     * 请求参数：
+     * post_id: String  // 帖子ID,从postList组件中获取
+     * 响应参数：
+     * title: String  // 帖子标题
+     * message: String  // 帖子内容
+     * post_partition: String  // 帖子分区
+     * created_at: String  // 帖子创建时间
+     * updated_at: String  // 帖子更新时间
+     */
+    @PostMapping("/fetchPostsDetails")
+    public  Post fetchPostsDetails(@RequestBody Map<String, Object> request) {
+
+
+            long post_id = ((Number) request.get("post_id")).longValue();
+            log.info("根据id获取帖子详情: {}", post_id);
+            return postService.fetchPostsDetails(post_id);
+
+    }
+    /*
+     * 点赞要实现数据库的帖子点赞数加1，更新点赞数，需要后端接口支持。
+     * handleLikes1
+     * 请求参数：
+     * post_id: String  // 帖子ID,从postList组件中获取
+     * 响应参数：
+     * success: Boolean  // 是否点赞成功
+     * likes: Number  // 帖子点赞数
+     */
+    @PostMapping("/handleLikes1")
+    public  int handleLikes1(@RequestBody Map<String, Object> request) {
+
+        try {
+            long post_id = ((Number) request.get("post_id")).longValue();
+
+            log.info("根据id响应点赞数量: {}", post_id);
+            int likes= postService.handleLikes1(post_id);
+            return likes;
+        }catch (Exception e){
+            return 0;
+        }
+
+    }
+
 }
