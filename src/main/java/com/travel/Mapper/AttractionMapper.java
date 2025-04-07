@@ -21,5 +21,8 @@ public interface AttractionMapper {
 
 
     @Select("select * from famous_people where person_id in (select person_id from attraction_famous_people where attraction_id=#{attractionId})")
-    List<FamousPeople> getFamousPeopleById(Long attractionId);
+    List<FamousPeople> getFamousPeopleById(long attractionId);
+
+    @Select("select * from attractions where attraction_id=#{attractionId}")
+    int getLikes(long attractionId);
 }

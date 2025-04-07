@@ -11,6 +11,7 @@ public interface AttractionService {
 
     Attractions getById(Integer attractionId);
 
-    AttractionsVO fetchAttractionDetail(Long attractionId);
+    AttractionsVO fetchAttractionDetail(long attractionId);
 
+    int handleLikes(long attractionId);
 }

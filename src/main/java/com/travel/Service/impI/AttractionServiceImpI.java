@@ -35,7 +35,7 @@ public class AttractionServiceImpI  implements AttractionService {
     }
 
     @Override
-    public AttractionsVO fetchAttractionDetail(Long attractionId) {
+    public AttractionsVO fetchAttractionDetail(long attractionId) {
 
         Attractions attractions=attractionMapper.getById(attractionId);
 
@@ -45,5 +45,10 @@ public class AttractionServiceImpI  implements AttractionService {
         List<FamousPeople> famousPeople=attractionMapper.getFamousPeopleById(attractionId);
         attractionsVO.setRelatedFigures(famousPeople);
         return attractionsVO;
+    }
+
+    @Override
+    public int handleLikes(long attractionId) {
+        return attractionMapper.getLikes(attractionId);
     }
 }

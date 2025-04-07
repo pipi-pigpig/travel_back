@@ -114,8 +114,29 @@ public class AttractionController {
     @PostMapping("/fetchAttractionDetail")
     public AttractionsVO fetchAttractionDetail(@RequestBody Map<String, Long> request) {
 
-        Long attraction_id= request.get("attraction_id");
+        long attraction_id= request.get("attraction_id");
         log.info("根据id获取单个景点的详细信息: {}", attraction_id);
         return attractionService.fetchAttractionDetail(attraction_id);
     }
+    /*要实现数据库的景点点赞数加1，更新点赞数，需要后端接口支持。
+      请求参数：
+      attraction_id: String  // 景点ID,从attractionsLists组件中获取
+      响应参数：
+      likes: Number  // 点赞数量
+    */
+    @PostMapping("/handleLikes")
+    public  int handleLikes(@RequestBody Map<String, Object> request) {
+
+        try {
+            long attraction_id= ((Number) request.get("attraction_id")).longValue();
+
+            log.info("根据id响应点赞数量: {}", attraction_id);
+            int likes= attractionService.handleLikes(attraction_id);
+            return likes;
+        }catch (Exception e){
+            return 0;
+        }
+
+    }
+
 }
