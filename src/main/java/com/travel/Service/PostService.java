@@ -17,4 +17,9 @@ public interface PostService {
     Post fetchPostsDetails(long postId);
 
     int handleLikes1(long postId);
+
+    int likeComment(long postCommentId);
+
+    void deleteComment(long postCommentId);
+
 }

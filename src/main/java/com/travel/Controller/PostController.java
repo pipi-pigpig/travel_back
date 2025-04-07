@@ -124,5 +124,51 @@ public class PostController {
         }
 
     }
+    /*
+     * 点赞评论
+     *   likeComment
+     * 请求参数:
+     * post_comment_id: String
+     *
+     * 响应参数:
+     * likes: 点赞数+1
+     */
 
+    @PostMapping("/likeComment")
+    public  int likeComment(@RequestBody Map<String, Object> request) {
+
+        try {
+            long post_comment_id = ((Number) request.get("post_comment_id")).longValue();
+
+            log.info("根据id点赞数+1: {}", post_comment_id);
+            int likes= postService.likeComment(post_comment_id);
+            return likes;
+        }catch (Exception e){
+            return 0;
+        }
+
+    }
+    /*
+     * 删除评论
+     *   deleteComment
+     * 请求参数:
+     * post_comment_id: String
+     *
+     * 响应参数:
+     * 无需返回具体数据，评论将被删除
+     */
+    @DeleteMapping("/deleteComment")
+    public  String deleteComment(@RequestBody Map<String, Object> request) {
+
+        try {
+            long post_comment_id = ((Number) request.get("post_comment_id")).longValue();
+
+            log.info("根据id删除评论: {}", post_comment_id);
+            postService.deleteComment(post_comment_id);
+            return "删除成功";
+        }catch (Exception e){
+            return "删除失败";
+        }
+
+    }
 }

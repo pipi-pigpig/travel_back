@@ -58,4 +58,16 @@ public class PostServiceImpI implements PostService {
     public int handleLikes1(long postId) {
         return postMapper.getLikesById(postId);
     }
+
+    @Override
+    public int likeComment(long postCommentId) {
+
+        postMapper.updateLikes(postCommentId);
+        return postMapper.getCommentLikesById(postCommentId);
+    }
+
+    @Override
+    public void deleteComment(long postCommentId) {
+        postMapper.deleteById(postCommentId);
+    }
 }

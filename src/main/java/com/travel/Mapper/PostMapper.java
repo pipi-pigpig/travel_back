@@ -2,10 +2,7 @@ package com.travel.Mapper;
 
 
 import com.travel.entity.Post;
-import org.apache.ibatis.annotations.Delete;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
@@ -32,4 +29,12 @@ public interface PostMapper {
 @Select("select posts.likes from posts where post_id=#{postId}")
     int getLikesById(long postId);
 
+    @Select("select likes from post_comments where post_comment_id=#{postCommentId}")
+    int getCommentLikesById(long postCommentId);
+
+    @Update("update post_comments set likes=likes+1 where post_comment_id=#{postCommentId}")
+    void updateLikes(long postCommentId);
+
+    @Delete("delete  from post_comments where post_comment_id=#{postCommentId}")
+    void deleteById(long postCommentId);
 }
