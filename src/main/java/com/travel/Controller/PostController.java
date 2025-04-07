@@ -95,6 +95,7 @@ public class PostController {
     public  Post fetchPostsDetails(@RequestBody Map<String, Object> request) {
 
 
+
             long post_id = ((Number) request.get("post_id")).longValue();
             log.info("根据id获取帖子详情: {}", post_id);
             return postService.fetchPostsDetails(post_id);
