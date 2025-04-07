@@ -28,5 +28,10 @@ public class PeopleServiceImpI implements PeopleService {
         return peopleMapper.getById(attractionId);
     }
 
+    @Override
+    public List<FamousPeople> fetchFamousPeople() {
+        return peopleMapper.getPeoples();
+    }
+
 
 }

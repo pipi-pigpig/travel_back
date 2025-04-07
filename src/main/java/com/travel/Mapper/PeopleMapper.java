@@ -20,6 +20,6 @@ public interface PeopleMapper {
     List<FamousPeople> getById(Integer attractionId);
 
 
-
-
+    @Select("select * from famous_people")
+    List<FamousPeople> getPeoples();
 }

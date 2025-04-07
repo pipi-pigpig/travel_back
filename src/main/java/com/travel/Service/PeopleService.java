@@ -9,4 +9,8 @@ public interface PeopleService {
 
 
     List<FamousPeople> getById(Integer attractionId);
+
+    List<FamousPeople> fetchFamousPeople();
+
+
 }
