@@ -53,4 +53,27 @@ public class PeopleController {
         log.info("获取名人列表: ");
         return peopleService.fetchFamousPeople();
     }
+
+    /*
+     * 删除名人信息
+     *deleteFamousPeople
+     * 请求参数：
+     * person_id: number
+     * 响应参数：
+     * 无
+     */
+    @PostMapping("/deleteFamousPeople")
+    public  String deleteFamousPeople(@RequestBody Map<String, Object> request) {
+
+        try {
+            long person_id = ((Number) request.get("person_id")).longValue();
+
+            log.info("根据id删除名人信息: {}", person_id);
+            peopleService.deleteFamousPeople(person_id);
+            return "删除成功";
+        }catch (Exception e){
+            return "删除失败";
+        }
+
+    }
 }

@@ -1,12 +1,14 @@
 package com.travel.Controller;
 
 
+import com.travel.AtrractionsVO.OrderDetailVO;
 import com.travel.DTO.PostCheckOutDTO;
 import com.travel.DTO.PostDTO;
 import com.travel.DTO.ProductionDTO;
 import com.travel.DTO.ProductionUpdateDTO;
 import com.travel.Service.ProductService;
 import com.travel.entity.Address;
+import com.travel.entity.PreOrders;
 import com.travel.entity.Products;
 import com.travel.result.Result;
 import lombok.extern.slf4j.Slf4j;
@@ -272,6 +274,47 @@ public class ProductController {
         } catch (Exception e) {
             return "添加土特产失败";
         }
+
+    }
+    /*
+     * 返回所有要审核的订单
+     * fetchOrder
+     * 请求参数：
+     * 无
+     *
+     * 响应参数：
+     * orders:[{
+     *  order_id,
+     *  status,
+     *  total_price,
+     *  created_at,
+     *  user_id,
+     *  address
+     * },...]
+     */
+    @PostMapping("/fetchOrder")
+    public List<PreOrders> fetchOrder() {
+
+        log.info("返回所有要审核的订单");
+        return productService.fetchOrder();
+    }
+    /*
+     * 请求参数：
+     * order_id:Int
+     * fetchOrderDetails
+     * 响应参数：
+     * order_details:[{
+     *  name,
+     *  price,
+     *  quantity
+     * },...],
+     */
+    @PostMapping("/fetchOrderDetails")
+    public  List<OrderDetailVO> fetchOrderDetails(@RequestBody Map<String, Object> request) {
+
+            long order_id = ((Number) request.get("order_id")).longValue();
+            log.info("根据id返回商品: {}", order_id);
+            return  productService.fetchOrderDetails(order_id);
 
     }
 }

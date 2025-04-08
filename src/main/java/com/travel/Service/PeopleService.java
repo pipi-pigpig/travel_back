@@ -13,4 +13,5 @@ public interface PeopleService {
     List<FamousPeople> fetchFamousPeople();
 
 
+    void deleteFamousPeople(long personId);
 }

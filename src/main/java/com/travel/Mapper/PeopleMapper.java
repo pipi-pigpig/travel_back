@@ -2,6 +2,7 @@ package com.travel.Mapper;
 
 
 import com.travel.entity.FamousPeople;
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
@@ -22,4 +23,7 @@ public interface PeopleMapper {
 
     @Select("select * from famous_people")
     List<FamousPeople> getPeoples();
+
+    @Delete("delete  from famous_people where person_id=#{personId}")
+    void deleteFamousPeople(long personId);
 }

@@ -33,5 +33,10 @@ public class PeopleServiceImpI implements PeopleService {
         return peopleMapper.getPeoples();
     }
 
+    @Override
+    public void deleteFamousPeople(long personId) {
+        peopleMapper.deleteFamousPeople(personId);
+    }
+
 
 }

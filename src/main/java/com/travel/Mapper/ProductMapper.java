@@ -1,6 +1,7 @@
 package com.travel.Mapper;
 
 
+import com.travel.AtrractionsVO.OrderDetailVO;
 import com.travel.DTO.ProductionUpdateDTO;
 import com.travel.entity.Address;
 import com.travel.entity.OrderDetail;
@@ -47,4 +48,14 @@ public interface ProductMapper {
 
     @Update("update local_products set stock=0 where product_id=#{productId}")
     void updateStock(long productId, Integer stock);
+
+    @Select("select * from pre_orders where status='pending'")
+    List<PreOrders> getOrders();
+
+    @Select("select local_products.name,order_details.quantity,local_products.price*order_details.quantity as price from local_products,pre_orders,order_details\n" +
+            "where pre_orders.order_id=1\n" +
+            "and  order_details.order_id=pre_orders.order_id\n" +
+            "and order_details.product_id=local_products.product_id;")
+    List<OrderDetailVO> getOrderDetails(long orderId);
+
 }

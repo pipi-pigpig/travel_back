@@ -1,6 +1,7 @@
 package com.travel.Service.impI;
 
 
+import com.travel.AtrractionsVO.OrderDetailVO;
 import com.travel.DTO.PostCheckOutDTO;
 import com.travel.DTO.ProductionDTO;
 import com.travel.DTO.ProductionUpdateDTO;
@@ -107,5 +108,15 @@ private ProductMapper productMapper;
     @Override
     public void deleteProduction2(long productId, Integer stock) {
         productMapper.updateStock(productId,stock);
+    }
+
+    @Override
+    public List<PreOrders> fetchOrder() {
+        return productMapper.getOrders();
+    }
+
+    @Override
+    public List<OrderDetailVO> fetchOrderDetails(long orderId) {
+        return productMapper.getOrderDetails(orderId);
     }
 }
