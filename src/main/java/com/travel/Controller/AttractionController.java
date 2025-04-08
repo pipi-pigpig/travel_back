@@ -139,24 +139,28 @@ public class AttractionController {
 
     }
     /*
-     * 创建新帖子
-     * submitPost
+     * 删除景点信息
+     * deleteScenery
      * 请求参数：
-     * {
-     *   title: String,    // 标题（必需）
-     *   message: String   // 内容（必需）
-     * }
+     * attraction_id: 景点ID
      *
      * 响应参数：
-     * {
-     *   post_id: Number,     // 帖子ID
-     *   title: String,       // 标题
-     *   message: String,     // 内容
-     *   user_id: Number,     // 作者ID
-     *   created_at: String,  // 创建时间（ISO格式）
-     *   updated_at: String   // 更新时间（ISO格式）
-     * }
+     * 无
      *
      */
 
+    @PostMapping("/deleteScenery")
+    public  int deleteScenery(@RequestBody Map<String, Object> request) {
+
+        try {
+            long attraction_id= ((Number) request.get("attraction_id")).longValue();
+
+            log.info("根据id删除景点信息: {}", attraction_id);
+             attractionService.deleteScenery(attraction_id);
+            return 1;
+        }catch (Exception e){
+            return 0;
+        }
+
+    }
 }

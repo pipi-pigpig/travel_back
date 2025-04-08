@@ -4,6 +4,7 @@ package com.travel.Mapper;
 import com.travel.AtrractionsVO.AttractionsVO;
 import com.travel.entity.Attractions;
 import com.travel.entity.FamousPeople;
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
@@ -25,4 +26,8 @@ public interface AttractionMapper {
 
     @Select("select * from attractions where attraction_id=#{attractionId}")
     int getLikes(long attractionId);
+
+    @Delete("delete from attractions where attraction_id=#{attractionId} ")
+    void deleteById(long attractionId);
+
 }

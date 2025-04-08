@@ -14,4 +14,6 @@ public interface AttractionService {
     AttractionsVO fetchAttractionDetail(long attractionId);
 
     int handleLikes(long attractionId);
+
+    void deleteScenery(long attractionId);
 }

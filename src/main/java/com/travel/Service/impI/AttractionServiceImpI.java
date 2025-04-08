@@ -51,4 +51,9 @@ public class AttractionServiceImpI  implements AttractionService {
     public int handleLikes(long attractionId) {
         return attractionMapper.getLikes(attractionId);
     }
+
+    @Override
+    public void deleteScenery(long attractionId) {
+         attractionMapper.deleteById(attractionId);
+    }
 }

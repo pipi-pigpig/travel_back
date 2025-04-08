@@ -19,4 +19,6 @@ public interface ProductService {
 
     void postCheckOut(PostCheckOutDTO postCheckOutDTO);
 
+    List<Products> fetchProductions();
+
 }

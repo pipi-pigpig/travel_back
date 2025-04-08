@@ -75,4 +75,9 @@ private ProductMapper productMapper;
         }
 
     }
+
+    @Override
+    public List<Products> fetchProductions() {
+        return productMapper.getProductions();
+    }
 }

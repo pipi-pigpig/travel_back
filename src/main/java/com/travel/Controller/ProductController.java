@@ -160,4 +160,25 @@ public class ProductController {
 
     }
 
+    /*
+     * 获取土特产列表
+     * fetchProductions
+     * 请求参数：
+     * 无
+     *
+     * 响应参数：
+     * productionList[{
+     *   product_id: number,
+     *   name: string,
+     *   description: string,
+     *   price: number,
+     *   stock: number
+     * },...]
+     */
+    @PostMapping("/fetchProductions")
+    public List<Products> fetchProductions() {
+
+        log.info("获取土特产列表");
+        return productService.fetchProductions();
+    }
 }

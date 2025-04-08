@@ -33,4 +33,8 @@ public interface ProductMapper {
     void insert(PreOrders preOrders);
 
     void insertBatch(List<OrderDetail> orderDetail);
+
+    @Select("select * from local_products")
+    List<Products> getProductions();
+
 }
