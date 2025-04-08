@@ -1,6 +1,7 @@
 package com.travel.Mapper;
 
 
+import com.travel.DTO.ProductionUpdateDTO;
 import com.travel.entity.Address;
 import com.travel.entity.OrderDetail;
 import com.travel.entity.PreOrders;
@@ -40,4 +41,7 @@ public interface ProductMapper {
     @Insert("insert into local_products(name, messsage, price, image, stock, created_at, updated_at)" +
             "values (#{name},#{messsage},#{price},#{image},#{stock},#{created_at},#{updated_at})")
     void insertProduction(Products product);
+
+    @Update("update local_products set name=#{name},message=#{message},price=#{price},stock=#{stock} where product_id=#{productId}")
+    void updateProduction(long productId, String name, String message, Integer price, Integer stock);
 }

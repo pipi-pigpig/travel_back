@@ -4,6 +4,7 @@ package com.travel.Controller;
 import com.travel.DTO.PostCheckOutDTO;
 import com.travel.DTO.PostDTO;
 import com.travel.DTO.ProductionDTO;
+import com.travel.DTO.ProductionUpdateDTO;
 import com.travel.Service.ProductService;
 import com.travel.entity.Address;
 import com.travel.entity.Products;
@@ -207,6 +208,37 @@ public class ProductController {
         try {
             log.info("添加土特产:{}", productionDTO);
             productService.handleAddProduction(productionDTO);
+            return "添加土特产成功";
+        } catch (Exception e) {
+            return "添加土特产失败";
+        }
+
+    }
+    /*
+     * 修改土特产
+     * handleModifyProduction
+     * 请求参数：
+     * {
+     *   product_id: number,
+     *   name: string,
+     *   message: string,
+     *   price: number,
+     *   stock: number
+     * }
+     *
+     * 响应参数：
+     * {
+     *   success: boolean,
+     *   message: string
+     * }
+     */
+    @PostMapping("/handleModifyProduction")
+    public String handleModifyProduction(@RequestBody ProductionUpdateDTO productionUpdateDTO) {
+
+
+        try {
+            log.info("修改土特产:{}", productionUpdateDTO);
+            productService.handleModifyProduction(productionUpdateDTO);
             return "添加土特产成功";
         } catch (Exception e) {
             return "添加土特产失败";

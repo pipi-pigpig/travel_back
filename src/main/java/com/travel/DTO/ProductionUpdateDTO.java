@@ -8,9 +8,10 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class ProductionDTO {
+public class ProductionUpdateDTO {
 
 
+    private long production_id;
     private String name;
     private String message;
     private Integer price;

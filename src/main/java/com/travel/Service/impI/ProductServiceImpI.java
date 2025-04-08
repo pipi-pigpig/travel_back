@@ -3,6 +3,7 @@ package com.travel.Service.impI;
 
 import com.travel.DTO.PostCheckOutDTO;
 import com.travel.DTO.ProductionDTO;
+import com.travel.DTO.ProductionUpdateDTO;
 import com.travel.Mapper.PostMapper;
 import com.travel.Mapper.ProductMapper;
 import com.travel.Service.ProductService;
@@ -90,5 +91,16 @@ private ProductMapper productMapper;
         product.setUpdated_at(LocalDateTime.now());
         product.setImage("null");
         productMapper.insertProduction(product);
+    }
+
+    @Override
+    public void handleModifyProduction(ProductionUpdateDTO productionUpdateDTO) {
+
+       long product_id= productionUpdateDTO.getProduction_id();
+       String name = productionUpdateDTO.getName();
+       String message = productionUpdateDTO.getMessage();
+       Integer price = productionUpdateDTO.getPrice();
+       Integer stock = productionUpdateDTO.getStock();
+       productMapper.updateProduction(product_id,name,message,price,stock);
     }
 }
