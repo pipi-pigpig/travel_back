@@ -1,6 +1,7 @@
 package com.travel.Service;
 
 import com.travel.DTO.PostCheckOutDTO;
+import com.travel.DTO.ProductionDTO;
 import com.travel.entity.Address;
 import com.travel.entity.Products;
 
@@ -21,4 +22,5 @@ public interface ProductService {
 
     List<Products> fetchProductions();
 
+    void handleAddProduction(ProductionDTO productionDTO);
 }

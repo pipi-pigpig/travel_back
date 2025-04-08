@@ -2,6 +2,7 @@ package com.travel.Service.impI;
 
 
 import com.travel.DTO.PostCheckOutDTO;
+import com.travel.DTO.ProductionDTO;
 import com.travel.Mapper.PostMapper;
 import com.travel.Mapper.ProductMapper;
 import com.travel.Service.ProductService;
@@ -79,5 +80,15 @@ private ProductMapper productMapper;
     @Override
     public List<Products> fetchProductions() {
         return productMapper.getProductions();
+    }
+
+    @Override
+    public void handleAddProduction(ProductionDTO productionDTO) {
+        Products product=new Products();
+        BeanUtils.copyProperties(productionDTO,product);
+        product.setCreated_at(LocalDateTime.now());
+        product.setUpdated_at(LocalDateTime.now());
+        product.setImage("null");
+        productMapper.insertProduction(product);
     }
 }

@@ -2,9 +2,12 @@ package com.travel.Controller;
 
 
 import com.travel.DTO.PostCheckOutDTO;
+import com.travel.DTO.PostDTO;
+import com.travel.DTO.ProductionDTO;
 import com.travel.Service.ProductService;
 import com.travel.entity.Address;
 import com.travel.entity.Products;
+import com.travel.result.Result;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -180,5 +183,34 @@ public class ProductController {
 
         log.info("获取土特产列表");
         return productService.fetchProductions();
+    }
+    /*
+     * 添加土特产
+     * handleAddProduction
+     * 请求参数：
+     * {
+     *   name: string,
+     *   message: string,
+     *   price: number,
+     *   stock: number
+     * }
+     *
+     * 响应参数：
+     * {
+     *   success: boolean,
+     *   message: string
+     * }
+     */
+    @PostMapping("/handleAddProduction")
+    public String handleAddProduction(@RequestBody ProductionDTO productionDTO) {
+
+        try {
+            log.info("添加土特产:{}", productionDTO);
+            productService.handleAddProduction(productionDTO);
+            return "添加土特产成功";
+        } catch (Exception e) {
+            return "添加土特产失败";
+        }
+
     }
 }
