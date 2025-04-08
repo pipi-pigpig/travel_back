@@ -103,4 +103,9 @@ private ProductMapper productMapper;
        Integer stock = productionUpdateDTO.getStock();
        productMapper.updateProduction(product_id,name,message,price,stock);
     }
+
+    @Override
+    public void deleteProduction2(long productId, Integer stock) {
+        productMapper.updateStock(productId,stock);
+    }
 }

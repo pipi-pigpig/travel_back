@@ -19,7 +19,7 @@ import java.util.Map;
 @CrossOrigin
 @Slf4j
 @RestController
-@RequestMapping("/product")
+//@RequestMapping("/product")
 public class ProductController {
 
     @Autowired
@@ -239,6 +239,35 @@ public class ProductController {
         try {
             log.info("修改土特产:{}", productionUpdateDTO);
             productService.handleModifyProduction(productionUpdateDTO);
+            return "添加土特产成功";
+        } catch (Exception e) {
+            return "添加土特产失败";
+        }
+
+    }
+    /*
+     * 删除土特产(只是更新库存数量，将库存数量置为0)
+     * deleteProduction
+     * 请求参数：
+     * {
+     *   product_id: number,
+     *   stock: number
+     * }
+     *
+     * 响应参数：
+     * {
+     *   success: boolean,
+     *   message: string
+     * }
+     */
+    @PostMapping("/deleteProduction2")
+    public String deleteProduction2(@RequestBody Map<String, Object> request) {
+
+        try {
+            long product_id = ((Number) request.get("product_id")).longValue();
+            Integer stock = ((Number) request.get("stock")).intValue();
+            log.info("根据id删除土特产(只是更新库存数量，将库存数量置为0):{},{}", product_id,stock);
+            productService.deleteProduction2(product_id,stock);
             return "添加土特产成功";
         } catch (Exception e) {
             return "添加土特产失败";

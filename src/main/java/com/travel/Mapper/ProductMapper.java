@@ -44,4 +44,7 @@ public interface ProductMapper {
 
     @Update("update local_products set name=#{name},message=#{message},price=#{price},stock=#{stock} where product_id=#{productId}")
     void updateProduction(long productId, String name, String message, Integer price, Integer stock);
+
+    @Update("update local_products set stock=0 where product_id=#{productId}")
+    void updateStock(long productId, Integer stock);
 }

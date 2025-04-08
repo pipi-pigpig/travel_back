@@ -26,4 +26,6 @@ public interface ProductService {
     void handleAddProduction(ProductionDTO productionDTO);
 
     void handleModifyProduction(ProductionUpdateDTO productionUpdateDTO);
+
+    void deleteProduction2(long productId, Integer stock);
 }
