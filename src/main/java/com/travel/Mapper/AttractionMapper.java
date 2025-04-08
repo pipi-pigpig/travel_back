@@ -7,6 +7,7 @@ import com.travel.entity.FamousPeople;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import java.util.List;
 
@@ -30,4 +31,6 @@ public interface AttractionMapper {
     @Delete("delete from attractions where attraction_id=#{attractionId} ")
     void deleteById(long attractionId);
 
+    @Update("update attractions set likes=likes+1 where attraction_id=#{attractionId}")
+    void updateLikes(long attractionId);
 }

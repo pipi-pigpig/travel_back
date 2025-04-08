@@ -1,6 +1,7 @@
 package com.travel.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -16,6 +17,7 @@ public class PreOrders {
     private long user_id;
     private Integer total_price;
     private String status;
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDateTime create_at;
     private String address;
 

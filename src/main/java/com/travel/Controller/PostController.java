@@ -2,6 +2,8 @@ package com.travel.Controller;
 
 
 import com.travel.DTO.PostDTO;
+import com.travel.DTO.ProductionUpdateDTO;
+import com.travel.DTO.UpdatePostDTO;
 import com.travel.Service.PostService;
 import com.travel.entity.Post;
 import com.travel.result.Result;
@@ -168,6 +170,32 @@ public class PostController {
             return "删除成功";
         }catch (Exception e){
             return "删除失败";
+        }
+
+    }
+    /*
+     * 更新帖子
+     * updatePost
+     * 请求参数：
+     * {
+     *   post_id: Number,  // 要更新的帖子ID
+     *   title: String,    // 标题（必需）
+     *   message: String   // 内容（必需）
+     * }
+     *
+     * 响应参数：
+     * 是否更新成功，无响应参数
+     */
+    @PostMapping("/updatePost")
+    public String updatePost(@RequestBody UpdatePostDTO updatePostDTO) {
+
+
+        try {
+            log.info("根据id更新帖子:{}", updatePostDTO);
+            postService.updatePost(updatePostDTO);
+            return "更新帖子成功";
+        } catch (Exception e) {
+            return "更新帖子失败";
         }
 
     }

@@ -1,6 +1,7 @@
 package com.travel.Service;
 
 import com.travel.DTO.PostDTO;
+import com.travel.DTO.UpdatePostDTO;
 import com.travel.entity.Post;
 
 import java.util.List;
@@ -21,5 +22,7 @@ public interface PostService {
     int likeComment(long postCommentId);
 
     void deleteComment(long postCommentId);
+
+    void updatePost(UpdatePostDTO updatePostDTO);
 
 }

@@ -138,6 +138,23 @@ public class AttractionController {
         }
 
     }
+    //景点点赞数加一
+    @PostMapping("/likeComment1")
+    public  int likeComment1(@RequestBody Map<String, Object> request) {
+
+        try {
+            long attraction_id= ((Number) request.get("attraction_id")).longValue();
+
+            log.info("根据id点赞数+1: {}", attraction_id);
+            int likes= attractionService.likeComment1(attraction_id);
+            return likes;
+        }catch (Exception e){
+            return 0;
+        }
+
+    }
+
+
     /*
      * 删除景点信息
      * deleteScenery
@@ -163,4 +180,6 @@ public class AttractionController {
         }
 
     }
+
+
 }

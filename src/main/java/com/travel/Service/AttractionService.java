@@ -16,4 +16,7 @@ public interface AttractionService {
     int handleLikes(long attractionId);
 
     void deleteScenery(long attractionId);
+
+    int likeComment1(long attractionId);
+
 }

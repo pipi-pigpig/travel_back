@@ -2,6 +2,7 @@ package com.travel.Service.impI;
 
 
 import com.travel.DTO.PostDTO;
+import com.travel.DTO.UpdatePostDTO;
 import com.travel.Mapper.PostMapper;
 import com.travel.Service.PostService;
 import com.travel.entity.Post;
@@ -69,5 +70,15 @@ public class PostServiceImpI implements PostService {
     @Override
     public void deleteComment(long postCommentId) {
         postMapper.deleteById(postCommentId);
+    }
+
+    @Override
+    public void updatePost(UpdatePostDTO updatePostDTO) {
+
+        long post_id = updatePostDTO.getPost_id();
+        String title = updatePostDTO.getTitle();
+        String message = updatePostDTO.getMessage();
+        postMapper.updatePost(post_id,title,message);
+
     }
 }

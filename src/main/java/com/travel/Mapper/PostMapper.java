@@ -37,4 +37,7 @@ public interface PostMapper {
 
     @Delete("delete  from post_comments where post_comment_id=#{postCommentId}")
     void deleteById(long postCommentId);
+
+    @Update("update posts set title=#{title},message=#{message} where post_id=#{postId}")
+    void updatePost(long postId, String title, String message);
 }
