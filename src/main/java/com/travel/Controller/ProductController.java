@@ -212,6 +212,7 @@ public class ProductController {
             productService.handleAddProduction(productionDTO);
             return "添加土特产成功";
         } catch (Exception e) {
+            System.out.println(e.getMessage());
             return "添加土特产失败";
         }
 

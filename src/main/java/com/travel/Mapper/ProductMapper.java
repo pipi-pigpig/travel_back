@@ -39,8 +39,9 @@ public interface ProductMapper {
     @Select("select * from local_products")
     List<Products> getProductions();
 
-    @Insert("insert into local_products(name, messsage, price, image, stock, created_at, updated_at)" +
-            "values (#{name},#{messsage},#{price},#{image},#{stock},#{created_at},#{updated_at})")
+    @Insert("insert into local_products(name, message, price, image, stock, created_at, updated_at)" +
+            "values (#{name},#{message},#{price},#{image},#{stock},#{created_at},#{updated_at})")
+    @Options(useGeneratedKeys = true, keyProperty = "product_id", keyColumn = "product_id")
     void insertProduction(Products product);
 
     @Update("update local_products set name=#{name},message=#{message},price=#{price},stock=#{stock} where product_id=#{productId}")
