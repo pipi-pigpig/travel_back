@@ -81,4 +81,10 @@ public class PostServiceImpI implements PostService {
         postMapper.updatePost(post_id,title,message);
 
     }
+
+    @Override
+    public int likeComment4(long postId) {
+        postMapper.updatePostLikes(postId);
+        return postMapper.getLikesById(postId);
+    }
 }

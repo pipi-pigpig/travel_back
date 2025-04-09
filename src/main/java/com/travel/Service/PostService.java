@@ -25,4 +25,5 @@ public interface PostService {
 
     void updatePost(UpdatePostDTO updatePostDTO);
 
+    int likeComment4(long postId);
 }

@@ -32,9 +32,11 @@ public interface ProductMapper {
 
     @Insert("insert into pre_orders( user_id, total_price, status, created_at, address)" +
             "values (#{user_id},#{total_price},#{status},#{created_at},#{address})")
+    @Options(useGeneratedKeys = true, keyProperty = "order_id", keyColumn = "order_id")
     void insert(PreOrders preOrders);
 
-    void insertBatch(List<OrderDetail> orderDetail);
+    //void insertBatch(List<OrderDetail> orderDetail);
+    void insertBatch(@Param("list") List<OrderDetail> orderDetails);
 
     @Select("select * from local_products")
     List<Products> getProductions();

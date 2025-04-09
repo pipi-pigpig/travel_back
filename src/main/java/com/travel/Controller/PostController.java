@@ -199,4 +199,20 @@ public class PostController {
         }
 
     }
+
+    //帖子点赞数加一
+    @PostMapping("/likeComment4")
+    public  int likeComment4(@RequestBody Map<String, Object> request) {
+
+        try {
+            long post_id= ((Number) request.get("post_id")).longValue();
+
+            log.info("根据id帖子点赞数+1: {}", post_id);
+            int likes= postService.likeComment4(post_id);
+            return likes;
+        }catch (Exception e){
+            return 0;
+        }
+
+    }
 }
