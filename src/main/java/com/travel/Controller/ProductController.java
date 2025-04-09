@@ -154,7 +154,8 @@ public class ProductController {
     public  int postCheckOut(@RequestBody PostCheckOutDTO postCheckOutDTO) {
         try {
             log.info("根据id修改用户结算账单");
-            //System.out.println(postCheckOutDTO.getOrder_details());
+
+            System.out.println(postCheckOutDTO.getOrder_details());
            productService.postCheckOut(postCheckOutDTO);
             return 1;
         }catch (Exception e){
@@ -316,4 +317,20 @@ public class ProductController {
             return  productService.fetchOrderDetails(order_id);
 
     }
+    /*
+     * 返回所有用户的历史订单
+     * fetchUserOrder
+     * 请求参数：
+     * user_id:Int
+     *
+     * 响应参数：
+     * orders:[{
+     *  order_id,
+     *  status,
+     *  total_price,
+     *  created_at,
+     *  user_id,
+     *  address
+     * },...]
+     */
 }

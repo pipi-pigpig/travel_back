@@ -17,6 +17,7 @@ public class Products {
     private String message;
     private Integer price;
     private String image;
+    private Integer quantity;
     private Integer stock;
     private LocalDateTime created_at ;
     private LocalDateTime updated_at ;

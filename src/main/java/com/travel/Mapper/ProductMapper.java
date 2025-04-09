@@ -34,7 +34,7 @@ public interface ProductMapper {
     void insert(PreOrders preOrders);
 
     //void insertBatch(List<OrderDetail> orderDetail);
-    void insertBatch(@Param("list") List<OrderDetail> orderDetails);
+    void insertBatch(@Param("list") List<OrderDetail> orderDetail);
 
     @Select("select * from local_products")
     List<Products> getProductions();
@@ -59,4 +59,8 @@ public interface ProductMapper {
             "and order_details.product_id=local_products.product_id;")
     List<OrderDetailVO> getOrderDetails(long orderId);
 
+    @Insert("insert into  order_details(order_id, product_id, quantity, price) VALUES " +
+            "(#{order_id},#{product_id},#{quantity},#{price})")
+    @Options(useGeneratedKeys = true, keyProperty = "order_detail_id", keyColumn = "order_detail_id")
+    void insertOrderDetail(OrderDetail orderDetail1);
 }

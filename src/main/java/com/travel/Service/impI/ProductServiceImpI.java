@@ -58,7 +58,7 @@ private ProductMapper productMapper;
 
         PreOrders preOrders = new PreOrders();
         BeanUtils.copyProperties(postCheckOutDTO,preOrders);
-        preOrders.setCreate_at(LocalDateTime.now());
+        preOrders.setCreated_at(LocalDateTime.now());
         preOrders.setStatus("pending");
         //preOrders.setOrder_id(1);
         productMapper.insert(preOrders);
@@ -72,8 +72,10 @@ private ProductMapper productMapper;
             for (OrderDetail orderDetail1 : orderDetail) {
 
                 orderDetail1.setOrder_id(orderId);
+
+                productMapper.insertOrderDetail(orderDetail1);
             }
-            productMapper.insertBatch(orderDetail);
+            //productMapper.insertBatch(orderDetail);
         }
 
     }
