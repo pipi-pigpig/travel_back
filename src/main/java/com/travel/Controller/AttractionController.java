@@ -1,11 +1,10 @@
 package com.travel.Controller;
 
 
-import com.travel.AtrractionsVO.AttractionsVO;
-import com.travel.AtrractionsVO.LocationAttractionsResponse;
+import com.travel.VO.AttractionsVO;
+import com.travel.VO.LocationAttractionsResponse;
 import com.travel.Service.AttractionService;
 import com.travel.entity.Attractions;
-import com.travel.entity.Products;
 import com.travel.result.Result;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,16 +1,13 @@
 package com.travel.Controller;
 
 
-import com.travel.AtrractionsVO.OrderDetailVO;
+import com.travel.VO.OrderDetailVO;
 import com.travel.DTO.PostCheckOutDTO;
-import com.travel.DTO.PostDTO;
 import com.travel.DTO.ProductionDTO;
 import com.travel.DTO.ProductionUpdateDTO;
 import com.travel.Service.ProductService;
-import com.travel.entity.Address;
 import com.travel.entity.PreOrders;
 import com.travel.entity.Products;
-import com.travel.result.Result;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

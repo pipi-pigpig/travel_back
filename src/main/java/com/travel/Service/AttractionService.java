@@ -1,6 +1,6 @@
 package com.travel.Service;
 
-import com.travel.AtrractionsVO.AttractionsVO;
+import com.travel.VO.AttractionsVO;
 import com.travel.entity.Attractions;
 
 import java.util.List;

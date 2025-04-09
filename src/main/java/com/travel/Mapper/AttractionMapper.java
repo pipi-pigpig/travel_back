@@ -1,7 +1,6 @@
 package com.travel.Mapper;
 
 
-import com.travel.AtrractionsVO.AttractionsVO;
 import com.travel.entity.Attractions;
 import com.travel.entity.FamousPeople;
 import org.apache.ibatis.annotations.Delete;

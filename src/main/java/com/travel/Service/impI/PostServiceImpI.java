@@ -5,6 +5,8 @@ import com.travel.DTO.PostDTO;
 import com.travel.DTO.UpdatePostDTO;
 import com.travel.Mapper.PostMapper;
 import com.travel.Service.PostService;
+import com.travel.VO.CommentsVO;
+import com.travel.VO.Comments_UsernameVO;
 import com.travel.entity.Post;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
@@ -86,5 +88,16 @@ public class PostServiceImpI implements PostService {
     public int likeComment4(long postId) {
         postMapper.updatePostLikes(postId);
         return postMapper.getLikesById(postId);
+    }
+
+    @Override
+    public CommentsVO fetchComments(long postId, long userId) {
+        Comments_UsernameVO comments_usernameVO = postMapper.getvoById(postId);
+        CommentsVO commentsVO = new CommentsVO();
+        BeanUtils.copyProperties(comments_usernameVO, commentsVO);
+
+        List<Long> userComments=postMapper.getPostCommentId(postId,userId);
+        commentsVO.setUserComments(userComments);
+        return commentsVO;
     }
 }

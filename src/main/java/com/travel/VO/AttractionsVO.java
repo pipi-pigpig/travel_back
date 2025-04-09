@@ -1,4 +1,4 @@
-package com.travel.AtrractionsVO;
+package com.travel.VO;
 
 
 import com.fasterxml.jackson.annotation.JsonFormat;

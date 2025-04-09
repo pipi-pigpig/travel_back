@@ -5,6 +5,8 @@ import com.travel.DTO.PostDTO;
 import com.travel.DTO.ProductionUpdateDTO;
 import com.travel.DTO.UpdatePostDTO;
 import com.travel.Service.PostService;
+import com.travel.VO.AttractionsVO;
+import com.travel.VO.CommentsVO;
 import com.travel.entity.Post;
 import com.travel.result.Result;
 import lombok.extern.slf4j.Slf4j;
@@ -214,5 +216,30 @@ public class PostController {
             return 0;
         }
 
+    }
+    /*
+     * 获取评论列表
+     * fetchComments
+     * 请求参数：
+     *  post_id: String
+     *  user_id:String
+     * 响应参数：
+     * comments:[{
+     *    post_comment_id,
+     *    username,
+     *    content,
+     *    likes,
+     *    avatar,
+     * },...],
+     * userComments:[]  (用户在这个帖子评论区里发表的所有评论的id)
+     *
+     */
+    @PostMapping("/fetchComments")
+    public CommentsVO fetchComments(@RequestBody Map<String, Object> request) {
+
+        long post_id = ((Number) request.get("post_id")).longValue();
+        long user_id = ((Number) request.get("user_id")).longValue();
+        log.info("根据id获取评论列表,用户在这个帖子评论区里发表的所有评论的id: {},{}", post_id,user_id);
+        return postService.fetchComments(post_id,user_id);
     }
 }

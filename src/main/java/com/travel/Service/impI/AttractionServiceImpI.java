@@ -1,7 +1,7 @@
 package com.travel.Service.impI;
 
 
-import com.travel.AtrractionsVO.AttractionsVO;
+import com.travel.VO.AttractionsVO;
 import com.travel.Mapper.AttractionMapper;
 import com.travel.Service.AttractionService;
 import com.travel.entity.Attractions;

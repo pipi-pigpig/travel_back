@@ -1,9 +1,7 @@
 package com.travel.Mapper;
 
 
-import com.travel.AtrractionsVO.OrderDetailVO;
-import com.travel.DTO.ProductionUpdateDTO;
-import com.travel.entity.Address;
+import com.travel.VO.OrderDetailVO;
 import com.travel.entity.OrderDetail;
 import com.travel.entity.PreOrders;
 import com.travel.entity.Products;
@@ -56,7 +54,7 @@ public interface ProductMapper {
     List<PreOrders> getOrders();
 
     @Select("select local_products.name,order_details.quantity,local_products.price*order_details.quantity as price from local_products,pre_orders,order_details\n" +
-            "where pre_orders.order_id=1\n" +
+            "where pre_orders.order_id=#{orderId}\n" +
             "and  order_details.order_id=pre_orders.order_id\n" +
             "and order_details.product_id=local_products.product_id;")
     List<OrderDetailVO> getOrderDetails(long orderId);
