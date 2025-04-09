@@ -33,4 +33,6 @@ public interface ProductService {
     List<PreOrders> fetchOrder();
 
     List<OrderDetailVO> fetchOrderDetails(long orderId);
+
+    List<PreOrders> fetchUserOrder(long userId);
 }

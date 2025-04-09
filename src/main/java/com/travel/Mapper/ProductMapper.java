@@ -63,4 +63,7 @@ public interface ProductMapper {
             "(#{order_id},#{product_id},#{quantity},#{price})")
     @Options(useGeneratedKeys = true, keyProperty = "order_detail_id", keyColumn = "order_detail_id")
     void insertOrderDetail(OrderDetail orderDetail1);
+
+    @Select("select  * from pre_orders where user_id=#{userId}")
+    List<PreOrders> getAllOrders(long userId);
 }

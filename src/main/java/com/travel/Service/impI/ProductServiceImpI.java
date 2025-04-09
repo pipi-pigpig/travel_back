@@ -120,4 +120,9 @@ private ProductMapper productMapper;
     public List<OrderDetailVO> fetchOrderDetails(long orderId) {
         return productMapper.getOrderDetails(orderId);
     }
+
+    @Override
+    public List<PreOrders> fetchUserOrder(long userId) {
+        return productMapper.getAllOrders(userId);
+    }
 }

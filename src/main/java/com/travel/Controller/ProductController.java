@@ -333,4 +333,11 @@ public class ProductController {
      *  address
      * },...]
      */
+    @PostMapping("/fetchUserOrder")
+    public List<PreOrders> fetchUserOrder(@RequestBody Map<String, Object> request) {
+
+        long user_id = ((Number) request.get("user_id")).longValue();
+        log.info("返回所有用户的历史订单:{}", user_id);
+        return productService.fetchUserOrder(user_id);
+    }
 }
