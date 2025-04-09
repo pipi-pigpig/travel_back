@@ -8,6 +8,7 @@ import com.travel.DTO.ProductionUpdateDTO;
 import com.travel.Service.ProductService;
 import com.travel.entity.PreOrders;
 import com.travel.entity.Products;
+import com.travel.entity.ShoppingCart;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -339,5 +340,33 @@ public class ProductController {
         long user_id = ((Number) request.get("user_id")).longValue();
         log.info("返回所有用户的历史订单:{}", user_id);
         return productService.fetchUserOrder(user_id);
+    }
+    /*
+     * 将商品提交到购物车（初始默认添加的商品数量为1）
+     * postAddShopCart
+     * 请求参数：
+     * user_id:Int
+     * product_id:Int
+     *
+     * 响应参数：
+     * 是否提交成功
+     */
+    @PostMapping("/postAddShopCart")
+    public int postAddShopCart(@RequestBody Map<String, Object> request) {
+
+        try {
+            long user_id = ((Number) request.get("user_id")).longValue();
+            long product_id = ((Number) request.get("product_id")).longValue();
+            ShoppingCart shoppingCart = new ShoppingCart();
+            shoppingCart.setQuantity(1);
+            long quantity = shoppingCart.getQuantity();
+            log.info("将商品提交到购物车（初始默认添加的商品数量为1）:{},{},{}", user_id,product_id,quantity);
+            productService.postAddShopCart(user_id,product_id,quantity);
+            return 1;
+
+        }catch (Exception e){
+            return 0;
+        }
+
     }
 }

@@ -125,4 +125,9 @@ private ProductMapper productMapper;
     public List<PreOrders> fetchUserOrder(long userId) {
         return productMapper.getAllOrders(userId);
     }
+
+    @Override
+    public void postAddShopCart(long userId, long productId, long quantity) {
+        productMapper.insertShopCart(userId,productId,quantity);
+    }
 }

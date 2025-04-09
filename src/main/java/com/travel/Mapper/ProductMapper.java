@@ -66,4 +66,8 @@ public interface ProductMapper {
 
     @Select("select  * from pre_orders where user_id=#{userId}")
     List<PreOrders> getAllOrders(long userId);
+
+    @Insert("insert into shopping_cart(user_id, product_id, quantity) VALUES " +
+            "(#{user_id},#{product_id},#{quantity})")
+    void insertShopCart(long userId, long productId, long quantity);
 }
