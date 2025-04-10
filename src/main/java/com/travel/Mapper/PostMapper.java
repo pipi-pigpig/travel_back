@@ -45,10 +45,12 @@ public interface PostMapper {
     @Update("update posts set likes=likes+1 where post_id=#{postId}")
     void updatePostLikes(long postId);
 
-    @Select("select post_comments.post_comment_id,users.username,post_comments.content,post_comments.likes,users.avatar\n" +
-            "from post_comments,users where users.user_id=post_comments.user_id and post_id=#{postId};\n" +
-            "\n")
-    Comments_UsernameVO getvoById(long postId);
+    @Select("""
+            select post_comments.post_comment_id,users.username,post_comments.content,post_comments.likes,users.avatar
+            from post_comments,users where users.user_id=post_comments.user_id and post_id=#{postId};
+
+            """)
+    List<Comments_UsernameVO> getvoById(long postId);
 
     @Select("select post_comments.post_comment_id from post_comments where post_id=#{postId} and user_id=#{userId}")
     List<Long> getPostCommentId(long postId, long userId);

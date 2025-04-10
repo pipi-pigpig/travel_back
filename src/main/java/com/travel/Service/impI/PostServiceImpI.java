@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Slf4j
@@ -92,12 +93,14 @@ public class PostServiceImpI implements PostService {
 
     @Override
     public CommentsVO fetchComments(long postId, long userId) {
-        Comments_UsernameVO comments_usernameVO = postMapper.getvoById(postId);
+        List<Comments_UsernameVO> comments_usernameVO = postMapper.getvoById(postId);
         CommentsVO commentsVO = new CommentsVO();
-        BeanUtils.copyProperties(comments_usernameVO, commentsVO);
+//        BeanUtils.copyProperties(comments_usernameVO, commentsVO);
+        commentsVO.setComments_username(comments_usernameVO);
 
         List<Long> userComments=postMapper.getPostCommentId(postId,userId);
-        commentsVO.setUserComments(userComments);
+
+          commentsVO.setUserComments(userComments);
         return commentsVO;
     }
 }
