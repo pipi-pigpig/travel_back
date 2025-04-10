@@ -42,7 +42,7 @@ public interface PostMapper {
     @Update("update posts set title=#{title},message=#{message} where post_id=#{postId}")
     void updatePost(long postId, String title, String message);
 
-    @Update("update posts set likes=likes+1 where post_comment_id=#{postCommentId}")
+    @Update("update posts set likes=likes+1 where post_id=#{postId}")
     void updatePostLikes(long postId);
 
     @Select("select post_comments.post_comment_id,users.username,post_comments.content,post_comments.likes,users.avatar\n" +
