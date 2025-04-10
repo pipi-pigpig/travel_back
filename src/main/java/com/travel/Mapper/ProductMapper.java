@@ -68,6 +68,6 @@ public interface ProductMapper {
     List<PreOrders> getAllOrders(long userId);
 
     @Insert("insert into shopping_cart(user_id, product_id, quantity) VALUES " +
-            "(#{user_id},#{product_id},#{quantity})")
+            "(#{userId},#{productId},#{quantity})")
     void insertShopCart(long userId, long productId, long quantity);
 }
