@@ -130,4 +130,13 @@ private ProductMapper productMapper;
     public void postAddShopCart(long userId, long productId, long quantity) {
         productMapper.insertShopCart(userId,productId,quantity);
     }
+
+    @Override
+    public void passOrder(long orderId, Integer isPass) {
+        if (isPass==1){
+            productMapper.updateYesPass(orderId);
+        }else {
+            productMapper.updateNoPass(orderId);
+        }
+    }
 }

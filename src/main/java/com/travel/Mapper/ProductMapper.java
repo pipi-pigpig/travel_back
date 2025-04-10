@@ -70,4 +70,11 @@ public interface ProductMapper {
     @Insert("insert into shopping_cart(user_id, product_id, quantity) VALUES " +
             "(#{userId},#{productId},#{quantity})")
     void insertShopCart(long userId, long productId, long quantity);
+
+    @Update("update pre_orders set status='completed' where order_id=#{orderId}")
+    void updateYesPass(long orderId);
+
+    @Update("update pre_orders set status='canceled' where order_id=#{orderId}")
+    void updateNoPass(long orderId);
+
 }

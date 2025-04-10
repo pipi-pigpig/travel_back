@@ -369,4 +369,28 @@ public class ProductController {
         }
 
     }
+    /*
+     * 审核通过订单
+     * passOrder
+     * 响应参数：
+     * order_id：Int,
+     * isPass:Int//1通过
+     *
+     * 返回参数：
+     * 是否修改成功
+     */
+    @PostMapping("/passOrder")
+    public String passOrder(@RequestBody Map<String, Object> request) {
+
+        try {
+            long order_id = ((Number) request.get("order_id")).longValue();
+            Integer isPass = ((Number) request.get("isPass")).intValue();
+            log.info("根据id审核通过订单:{},{}", order_id,isPass);
+            productService.passOrder(order_id,isPass);
+            return "修改成功";
+        } catch (Exception e) {
+            return "修改失败";
+        }
+
+    }
 }

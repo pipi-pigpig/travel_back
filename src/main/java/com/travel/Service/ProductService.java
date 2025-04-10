@@ -37,4 +37,6 @@ public interface ProductService {
     List<PreOrders> fetchUserOrder(long userId);
 
     void postAddShopCart(long userId, long productId, long quantity);
+
+    void passOrder(long orderId, Integer isPass);
 }
