@@ -120,7 +120,9 @@ public class PostController {
         try {
             long post_id = ((Number) request.get("post_id")).longValue();
 
-            log.info("根据id响应点赞数量: {}", post_id);
+
+
+                log.info("根据id响应点赞数量: {}", post_id);
             int likes= postService.handleLikes1(post_id);
             return likes;
         }catch (Exception e){
@@ -163,7 +165,6 @@ public class PostController {
      */
     @DeleteMapping("/deleteComment")
     public  String deleteComment(@RequestBody Map<String, Object> request) {
-
         try {
             long post_comment_id = ((Number) request.get("post_comment_id")).longValue();
 

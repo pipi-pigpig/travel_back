@@ -11,11 +11,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class CommentsVO {
-//    private Long post_comment_id;
-//    private String username;
-//    private String content;
-//    private Integer likes;
-//    private String avatar;
+
     List<Comments_UsernameVO> comments_username=new ArrayList<>();
     List<Long> userComments=new ArrayList<>();
 }
