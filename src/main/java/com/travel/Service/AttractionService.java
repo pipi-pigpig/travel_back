@@ -19,4 +19,5 @@ public interface AttractionService {
 
     int likeComment1(long attractionId);
 
+    String getStory(long attractionId, long personId);
 }

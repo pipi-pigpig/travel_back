@@ -17,6 +17,6 @@ public class FamousPeople {
     private String name;
     private String message;
     private String image;
-    private String story;
+
 
 }

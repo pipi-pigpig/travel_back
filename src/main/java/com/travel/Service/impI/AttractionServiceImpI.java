@@ -62,4 +62,10 @@ public class AttractionServiceImpI  implements AttractionService {
         attractionMapper.updateLikes(attractionId);
         return attractionMapper.getLikes(attractionId);
     }
+
+    @Override
+    public String getStory(long attractionId, long personId) {
+
+        return attractionMapper.getStory(attractionId,personId);
+    }
 }

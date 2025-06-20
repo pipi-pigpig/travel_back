@@ -32,4 +32,8 @@ public interface AttractionMapper {
 
     @Update("update attractions set likes=likes+1 where attraction_id=#{attractionId}")
     void updateLikes(long attractionId);
+
+    @Select("select story from attraction_famous_people where attraction_id=#{attractionId} and person_id=#{personId} ")
+    String getStory(long attractionId, long personId);
+
 }

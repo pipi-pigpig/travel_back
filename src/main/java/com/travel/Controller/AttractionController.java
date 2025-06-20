@@ -180,5 +180,19 @@ public class AttractionController {
 
     }
 
+    @PostMapping("/getStory")
+    public String getStory(@RequestBody Map<String, Object> request) {
+        try {
+
+            long attraction_id= ((Number) request.get("attraction_id")).longValue();
+            long person_id= ((Number) request.get("person_id")).longValue();
+            log.info("获取景点与名人之间的故事；{},{}", attraction_id,person_id);
+
+          return   attractionService.getStory(attraction_id,person_id);
+        }catch (Exception e) {
+        return  e.getMessage();
+        }
+    }
+
 
 }
